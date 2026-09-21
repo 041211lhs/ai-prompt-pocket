@@ -262,7 +262,14 @@ def add_prompt():
 
 
 def show_list():
-    print("(준비 중)")
+    print("\n=== 프롬프트 목록 ===")
+    if not prompts:
+        print("등록된 프롬프트가 없습니다.")
+        return
+    for i, p in enumerate(prompts, 1):
+        star = " ⭐" if p["favorite"] else ""
+        print(f"{i}. [{p['category']}] {p['title']}{star}")
+    print(f"\n총 {len(prompts)}개의 프롬프트")
 
 
 def show_by_category():
