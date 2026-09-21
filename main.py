@@ -340,7 +340,14 @@ def toggle_favorite():
 
 
 def show_favorites():
-    print("(준비 중)")
+    print("\n=== 즐겨찾기 목록 ===")
+    favorites = [p for p in prompts if p["favorite"]]
+    if not favorites:
+        print("즐겨찾기한 프롬프트가 없습니다.")
+        return
+    for i, p in enumerate(favorites, 1):
+        print(f"{i}. [{p['category']}] {p['title']} ⭐")
+    print(f"\n총 {len(favorites)}개의 즐겨찾기")
 
 
 def main():
