@@ -327,7 +327,16 @@ def show_detail():
 
 
 def toggle_favorite():
-    print("(준비 중)")
+    print("\n=== 즐겨찾기 관리 ===")
+    show_list()
+    choice = input("\n프롬프트 번호 입력: ").strip()
+    if not (choice.isdigit() and 1 <= int(choice) <= len(prompts)):
+        print("잘못된 번호입니다.")
+        return
+    p = prompts[int(choice) - 1]
+    p["favorite"] = not p["favorite"]
+    status = "추가" if p["favorite"] else "해제"
+    print(f"\n'{p['title']}' 프롬프트를 즐겨찾기에서 {status}했습니다!")
 
 
 def show_favorites():
